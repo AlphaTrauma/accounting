@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.dropdown-parent:hover + .dropdown, .dropdown-parent:focus + .dropdown, .dropdown:hover {
+    visibility: visible;
+    opacity: 1;
+}
+
+.dropdown {
+    visibility: hidden;
+    opacity: 0;
+}
+
+h1 {
+    @apply text-2xl font-bold my-5;
+}
+
+.link {
+    @apply underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none transition-all;
+}
+
+.btn {
+    @apply py-3 px-6 transition-all no-underline hover:no-underline focus:no-underline active:no-underline hover:opacity-90 hover:shadow-md rounded-md;
+}
+
+.btn-active {
+    @apply bg-gradient-to-r from-teal-600 to-cyan-700 text-white font-bold;
+}
+
+.tw-input {
+    @apply border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm;
+}
