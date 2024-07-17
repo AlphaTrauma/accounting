@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\MenuItem;
+use App\Models\Page;
 use Illuminate\Http\Request;
 
 class MenuItemsController extends Controller
@@ -13,7 +14,9 @@ class MenuItemsController extends Controller
 
     public function data()
     {
-        return MenuItem::orderBy('order')->get();
+        $items = MenuItem::orderBy('order')->get();
+        $pages = Page::query()->get(['title', 'slug']);
+        return response(['items' => $items, 'pages' => $pages]);
     }
 
     // Получение одного пункта меню

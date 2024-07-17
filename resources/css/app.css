@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: 'Candara';
+    src: url('http://accounting.test/fonts/candara.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    
+  }
+
+  @layer base {
+    body {
+      @apply font-candara;
+    }
+  }
+
 .dropdown-parent:hover + .dropdown, .dropdown-parent:focus + .dropdown, .dropdown:hover {
     visibility: visible;
     opacity: 1;
@@ -13,7 +27,7 @@
 }
 
 h1 {
-    @apply text-2xl font-bold my-5;
+    @apply text-4xl font-bold my-5;
 }
 
 .link {
@@ -21,13 +35,43 @@ h1 {
 }
 
 .btn {
-    @apply py-3 px-6 transition-all no-underline hover:no-underline focus:no-underline active:no-underline hover:opacity-90 hover:shadow-md rounded-md;
+    @apply cursor-pointer py-3 px-6 transition-all no-underline hover:no-underline focus:no-underline active:no-underline hover:opacity-90 hover:shadow-lg rounded-md;
+}
+
+
+.btn-sm {
+    @apply p-2 transition-all text-gray-700 no-underline hover:no-underline focus:no-underline active:no-underline hover:opacity-90 hover:shadow-md rounded-sm
 }
 
 .btn-active {
     @apply bg-gradient-to-r from-teal-600 to-cyan-700 text-white font-bold;
 }
 
-.tw-input {
-    @apply border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm;
+.btn-secondary {
+    @apply bg-gradient-to-l from-gray-500 to-gray-400 text-white font-bold
 }
+
+.btn-danger {
+    @apply bg-gradient-to-l from-[#ED1520] to-[#F1A515] text-white font-bold;
+}
+
+.tw-input {
+    @apply border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full;
+}
+
+.prose.prose-editor {
+    @apply max-w-[100%];
+}
+
+.prose table {
+    @apply w-full border-collapse border border-gray-200;
+  }
+  
+  .prose th,
+  .prose td {
+    @apply border border-gray-200 py-2 px-4;
+  }
+
+  .prose td>p, .prose th>p {
+    @apply m-0;
+  }

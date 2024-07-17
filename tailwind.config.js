@@ -1,5 +1,6 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
 import forms from '@tailwindcss/forms';
+import typography from '@tailwindcss/typography';
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -13,10 +14,14 @@ export default {
     theme: {
         extend: {
             fontFamily: {
+                candara: ['Candara', 'sans-serif'],
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            backgroundImage: {
+                'main-block-bg': "url('/images/woman.png')", 
+              }
         },
     },
 
-    plugins: [forms],
+    plugins: [forms, typography],
 };
