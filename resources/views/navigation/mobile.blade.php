@@ -16,7 +16,7 @@
                         @if(request()->route() and request()->route()->getName() === 'home')
                             <div class="relative font-semibold"><div class="block py-3  text-teal-800">Главная</div></div>
                         @else
-                            <a href="/" class="block py-3 text-gray-900 font-semibold" ">Главная</a>
+                            <a href="/" class="block py-3 text-gray-900 font-semibold">Главная</a>
                         @endif 
                     
                     @foreach($navItems[""] ?? [] as $navItem)

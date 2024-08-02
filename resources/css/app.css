@@ -12,7 +12,7 @@
 
   @layer base {
     body {
-      @apply font-candara;
+      @apply font-candara subpixel-antialiased antialiased;
     }
   }
 
@@ -35,16 +35,24 @@ h1 {
 }
 
 .btn {
-    @apply cursor-pointer py-3 px-6 transition-all no-underline hover:no-underline focus:no-underline active:no-underline hover:opacity-90 hover:shadow-lg rounded-md;
+    @apply cursor-pointer py-3 px-6 transition-all text-lg no-underline hover:no-underline focus:no-underline active:no-underline opacity-90 hover:opacity-100 shadow hover:shadow-lg rounded-md;
 }
 
 
 .btn-sm {
-    @apply p-2 transition-all text-gray-700 no-underline hover:no-underline focus:no-underline active:no-underline hover:opacity-90 hover:shadow-md rounded-sm
+    @apply py-1 px-6 transition-all text-gray-700 no-underline hover:no-underline focus:no-underline active:no-underline hover:opacity-90 hover:shadow-md rounded-md;
+}
+
+.btn-micro {
+    @apply py-1 px-2 text-xs transition-all text-gray-700 no-underline hover:no-underline focus:no-underline active:no-underline hover:opacity-90 hover:shadow-md rounded-sm;
 }
 
 .btn-active {
     @apply bg-gradient-to-r from-teal-600 to-cyan-700 text-white font-bold;
+}
+
+.btn-primary {
+    @apply bg-gradient-to-r from-amber-600 to-orange-700  text-white font-bold;
 }
 
 .btn-secondary {
@@ -55,8 +63,26 @@ h1 {
     @apply bg-gradient-to-l from-[#ED1520] to-[#F1A515] text-white font-bold;
 }
 
+.card-title {
+    @apply text-2xl font-bold py-3 text-gray-700 relative;
+}
+.card-title::after {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    content: "";
+    height: 3px;
+    width: 100px;
+    @apply bg-gradient-to-r from-teal-600 to-cyan-700;
+}
+
 .tw-input {
     @apply border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full;
+}
+
+.prose {
+    font-family: 'Times New Roman', Times, serif;
+    @apply text-2xl;
 }
 
 .prose.prose-editor {
@@ -75,3 +101,14 @@ h1 {
   .prose td>p, .prose th>p {
     @apply m-0;
   }
+
+  /* ANIMATIONS */
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}

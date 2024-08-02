@@ -22,7 +22,7 @@ class ComposerServiceProvider extends ServiceProvider
     public function boot(): void
     {
         View::composer(['navigation.navbar', 'navigation.mobile'], function($view) {
-            $items = MenuItem::orderBy('order')->get()->groupBy('parent_id');
+            $items = MenuItem::where('type', 'nav')->orderBy('order')->get()->groupBy('parent_id');
 
             $view->with(['navItems' => $items]);
         });

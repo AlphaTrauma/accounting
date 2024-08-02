@@ -11,7 +11,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body>
-        <div class="min-h-screen">
+        <div class="min-h-screen" id="app">
             @include('navigation.navbar')
 
             <div class="py-5 w-full mx-auto">

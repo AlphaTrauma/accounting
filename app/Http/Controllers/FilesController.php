@@ -19,10 +19,16 @@ class FilesController extends Controller
         if (!FileFacade::exists($uploadPath)) {
             FileFacade::makeDirectory($uploadPath, 0755, true);
         }
-        if ($this->isImage($uploadedFile)):
+        
+        if ($this->isImage($uploadedFile) and !$request['uncompressed']):
             $this->compressImage($uploadedFile, public_path($uploadPath), $filename);
-        else: 
-            $uploadedFile->storeAs(public_path($uploadPath), $filename);
+        else:
+            Storage::disk('public')->put($uploadPath.'/'.$filename, file_get_contents($uploadedFile)); 
+        endif;
+        
+        if($request['replace']):
+            File::where('entity_type', $request['entity_type'])
+            ->where('entity_id', $request['entity_id'])->delete();
         endif;
         $file = new File([
             'filepath' => '/'.$uploadPath.'/'. $filename,

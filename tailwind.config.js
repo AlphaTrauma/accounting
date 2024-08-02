@@ -18,7 +18,7 @@ export default {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
             backgroundImage: {
-                'main-block-bg': "url('/images/woman.png')", 
+                'main-block-bg': "url('/images/woman1.png')", 
               }
         },
     },

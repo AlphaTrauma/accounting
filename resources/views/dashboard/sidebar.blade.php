@@ -1,10 +1,20 @@
 <aside class="w-64 bg-white shadow-lg">
     <ul class="mt-4">
+        <li><a href="{{ route('slider') }}" class="py-2 px-4 text-gray-700 hover:bg-teal-200 flex gap-4 items-center">
+            <i class="fa-solid fa-bars"></i>
+            <span class="font-bold">Слайдер</span>
+        </a>
+    </li>
         <li><a href="{{ route('menu') }}" class="py-2 px-4 text-gray-700 hover:bg-teal-200 flex gap-4 items-center">
                 <i class="fa-solid fa-bars"></i>
                 <span class="font-bold">Навигация</span>
             </a>
         </li>
+        <li><a href="{{ route('affiliate') }}" class="py-2 px-4 text-gray-700 hover:bg-teal-200 flex gap-4 items-center">
+            <i class="fa-solid fa-bars"></i>
+            <span class="font-bold">Партнёрские категории</span>
+        </a>
+    </li>
         <li><a href="{{ route('categories') }}" class="py-2 px-4 text-gray-700 hover:bg-teal-200 flex gap-4 items-center">
             <i class="fa-solid fa-pen-to-square"></i>
             <span class="font-bold">Категории</span>

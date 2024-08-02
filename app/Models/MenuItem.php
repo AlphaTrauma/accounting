@@ -14,7 +14,8 @@ class MenuItem extends Model
         'url',
         'order',
         'parent_id',
-        'is_mobile'
+        'is_mobile',
+        'type'
     ];
 
     public function parent()

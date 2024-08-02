@@ -5,6 +5,8 @@
 @endsection
 
 @section('wide-content') 
-    @include('blocks.main_title')
+    <slider-main>
+        @include('blocks.slider_placeholder')
+    </slider-main>
     @include('blocks.main_second')
 @endsection

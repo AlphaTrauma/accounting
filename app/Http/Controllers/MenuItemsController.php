@@ -12,9 +12,13 @@ class MenuItemsController extends Controller
         return view('dashboard.menu.index');
     }
 
-    public function data()
+    public function affiliate(){
+        return view('dashboard.menu.affiliate');
+    }
+
+    public function data($type)
     {
-        $items = MenuItem::orderBy('order')->get();
+        $items = MenuItem::where('type', $type)->orderBy('order')->get();
         $pages = Page::query()->get(['title', 'slug']);
         return response(['items' => $items, 'pages' => $pages]);
     }

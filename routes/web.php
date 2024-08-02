@@ -7,21 +7,34 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\FilesController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\SliderController;
 use Arcanedev\LogViewer\Http\Controllers\LogViewerController;
 
 
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/dashboard', [\App\Http\Controllers\DashboardController::class, 'index']);
+Route::get('/data/slides', [SliderController::class, 'main']);
+Route::get('/dashboard/menu-items/{type}', [MenuItemsController::class, 'data']);
 
 Route::prefix('dashboard')->group(function () {
-    Route::get('/', [\App\Http\Controllers\DashboardController::class, 'index']);
+    Route::get('/', [\App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+
+    # Редактирование слайдера  
+    Route::get('/slider', [SliderController::class, 'slider'])->name('slider');
+    Route::get('/slider/data', [SliderController::class, 'sliderData']);
+    Route::post('/slider/delete/{id}', [SliderController::class, 'removeSlide']);
+    Route::post('/slider/update/{id?}', [SliderController::class, 'updateSlide']);
+    Route::post('/button/update', [SliderController::class, 'updateButton']);
+    Route::post('/button/remove', [SliderController::class, 'removeButton']);
+    Route::post('/slider/ordering', [SliderController::class, 'updateOrdering']);
 
     # Редактирование навигации
-    Route::get('/menu-manager', [MenuItemsController::class, 'index'])->name('menu');
-    Route::get('/menu-items', [MenuItemsController::class, 'data']);
+    Route::get('/menu-manager', [MenuItemsController::class, 'index'])->name('menu'); 
     Route::post('/menu-items', [MenuItemsController::class, 'store']);
     Route::put('/menu-items/{id}', [MenuItemsController::class, 'update']);
     Route::delete('/menu-items/{id}', [MenuItemsController::class, 'destroy']);
+
+    # Редактирование партнёрки
+    Route::get('/affiliate-menu', [MenuItemsController::class, 'affiliate'])->name('affiliate');
 
     # Редактирование категорий статей
     Route::get('/categories', [CategoriesController::class, 'index'])->name('categories');

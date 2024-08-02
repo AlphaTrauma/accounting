@@ -3,19 +3,18 @@
 @section('content')
     
     <div class="py-6 bg-white">
-        <article class="prose  max-w-screen-lg mx-auto">
-            <div class="text-right">
+        <article class="max-w-screen-lg mx-auto">
+            <div class="text-right"> 
                 @if($item->published_at) 
-                <div>Опубликовано {{ $item->published_at->format('H:i d.m.Y') }} @if($item->user) {{ $item->user->name }}@endif</p>
-            @else
-                <div>Не опубликовано</small>
-            @endif
-            </div>
+                    <p>Опубликовано {{ $item->published_at->format('H:i d.m.Y') }} @if($item->user) {{ $item->user->name }}@endif</p>
+                @else
+                    <p>Не опубликовано</p>
+                @endif 
             <h1 class="">{{ $item->title }}</h1>
-              
-        
-        </div>
-            {!! $item->content !!}
+            </div>
+            <div class="prose py-5">
+                {!! $item->content !!}
+            </div> 
         </article>
     </div>
 @endsection

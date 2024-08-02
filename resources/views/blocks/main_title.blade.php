@@ -1,5 +1,5 @@
 <div class="w-full bg-gradient-to-br from-gray-400 to-gray-100 ">
-    <div class="w-full pt-[120px] px-3 md:px-5 bg-right bg-contain bg-no-repeat md:bg-[url('http://accounting.test/images/woman2.png')]">
+    <div class="w-full pt-[120px] px-3 md:px-5 bg-right-bottom bg-contain bg-no-repeat md:bg-[url('http://accounting.test/images/woman.png')]">
         <div class="max-w-screen-xl mx-auto min-h-[90vh] flex items-center justify-between">
             <div class="basis-1/2">
     

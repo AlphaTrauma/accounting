@@ -1,16 +1,37 @@
-<nav  id="navbar" class="bg-transparent fixed top-0 left-0 w-full max-w-[100vw] py-2 transition-all">
-    <div class=" max-w-full md:max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2 text-lg bg-transparent">
-        @if(request()->route() and request()->route()->getName() === 'home')
-        <div  class="flex items-center space-x-3 text-teal-800 py-3 px-5">
+<nav  id="navbar" class="bg-transparent fixed top-0 left-0 w-full max-w-[100vw] py-2 transition-all z-10">
+    <div class="my-2 max-w-full md:max-w-screen-xl flex flex-wrap items-center justify-between mx-auto text-lg bg-transparent">
+        <div class="relative">
+            <div class="absolute bottom-[50%] translate-y-[80%]">
+                @if(request()->route() and request()->route()->getName() === 'home')
+        <div  class="flex items-center space-x-3 text-teal-800 py-1 px-5">
             <i class="fa-solid fa-share-nodes"></i>
             <span class="self-center text-2xl font-semibold whitespace-nowrap">СчётКоннект</span>
         </div> 
         @else
-        <a href="/" class="flex items-center space-x-3 text-teal-800 py-3 px-5">
+        <a href="/" class="flex items-center space-x-3 text-teal-800 py-1 px-5">
             <i class="fa-solid fa-share-nodes"></i>
             <span class="self-center text-2xl font-semibold whitespace-nowrap">СчётКоннект</span>
         </a> 
+        
         @endif
+        <p class="text-center">Фриланс профессионалов</p>
+            </div>
+        </div>
+
+       {{--  @auth
+            <a href="/dashboard" class="btn btn-sm btn-active "><i class="fa-solid fa-circle-user"></i> {{ Auth::user()->name }}</a>
+        @endauth --}}
+            <div class="flex gap-2">
+                <a href="/register" class="btn btn-sm btn-active"><i class="fa-solid fa-right-to-bracket"></i> Я заказчик</a>
+                <a href="/register" class="btn btn-sm btn-primary"><i class="fa-solid fa-right-to-bracket"></i> Я исполнитель</a>
+            </div>
+            
+        
+
+    </div>
+
+    <div class="mb-2 max-w-full md:max-w-screen-xl flex flex-wrap items-center justify-end mx-auto text-2xl bg-transparent">
+        
         
         <button data-collapse-toggle="navbar-dropdown" id="burger" type="button" class="inline-flex items-center p-2 w-10 h-10 text-teal-800
         justify-center rounded-lg md:hidden hover:bg-gray-100 focus:outline-none " aria-controls="navbar-dropdown"
@@ -21,17 +42,13 @@
             </svg>
         </button>
         <div class="w-full hidden md:block md:w-auto">
-            <div class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent">
-                @if(request()->route() and request()->route()->getName() === 'home')
-                    <div class="relative font-semibold"><div class="block py-2 px-3 text-teal-600" aria-current="page">Главная</div></div>
-                @else
-                    <a href="/" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent font-semibold" aria-current="page">Главная</a>
-                @endif
+            <div class="flex font-medium p-1 md:space-x-8 justify-end flex-row md:mt-0 bg-transparent">
+                 
                 @foreach($navItems[""] ?? [] as $navItem)
                     <div class="relative font-semibold">
                         @if($navItems->has($navItem->id))
-                            <div class=" py-2 px-3 cursor-pointer dropdown-parent flex items-center
-                                 @if('/'.request()->path() === $navItem->url) text-teal-600 @else text-gray-800 @endif"
+                            <div class=" py-1 px-3 cursor-pointer dropdown-parent flex items-center
+                                 @if('/'.request()->path() === $navItem->url)  text-gray-800   @else  text-cyan-800  hover:text-cyan-600 @endif"
                                  aria-current="page">{{ $navItem->title }} <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="ml-2 w-4 h-4">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                                 </svg>
@@ -42,11 +59,11 @@
                                     @foreach($navItems[$navItem->id] as $navChild)
                                     <li>
                                         @if('/'.request()->path() === $navChild->url)
-                                            <div class="block px-4 py-2 text-teal-600 whitespace-nowrap">
+                                            <div class="block px-4 py-1 text-gray-600 whitespace-nowrap">
                                                 {{ $navChild->title }}
                                             </div>
                                         @else
-                                            <a href="{{ $navChild->url }}" class="block px-4 py-2 border-l-4 border-transparent hover:border-l-cyan-600 
+                                            <a href="{{ $navChild->url }}" class="block px-4 py-1 border-l-[10px] border-l-cyan-600 hover:bg-cyan-600 hover:text-white
                                                 transition-all whitespace-nowrap">
                                                 {{ $navChild->title }}
                                             </a>
@@ -57,9 +74,9 @@
                             </div>
                         @else
                             @if('/'.request()->path() === $navItem->url)
-                                <div class="block py-2 px-3 text-teal-600" aria-current="page">{{ $navItem->title }}</div>
+                                <div class="block py-2 px-3 text-gray-600" aria-current="page">{{ $navItem->title }}</div>
                             @else
-                                <a href="{{ $navItem->url }}" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent" aria-current="page">{{ $navItem->title }}</a>
+                                <a href="{{ $navItem->url }}" class="block py-1 px-3 transition-all text-cyan-800  hover:text-cyan-600 md:hover:bg-transparent" aria-current="page">{{ $navItem->title }}</a>
                             @endif
                         @endif
 
@@ -69,14 +86,6 @@
 
         </div>
 
-    </div>
-    <div class="absolute right-0 top-0 h-[100%] hidden md:flex items-center justify-center px-6">
-        @auth
-            <a href="/dashboard" class="p-4 bg-white shadow-sm rounded-md text-gray-700"><i class="fa-solid fa-circle-user"></i> {{ Auth::user()->name }}</a>
-        @endauth
-        @guest
-            <a href="/register" class="btn btn-active">Зарегистрироваться</a>
-        @endguest
     </div>
 </nav>
 
