@@ -94,7 +94,9 @@ class PageController extends Controller
     public function show($slug)
     {
         $item = Page::where('slug', $slug)->first();
+        
         if (!$item) abort(404); 
-        return view('page.show', compact('item'));
+        $title = $item->title;
+        return view('page.show', compact('item', 'title'));
     }
 }

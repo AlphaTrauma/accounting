@@ -1,24 +1,24 @@
 <template>
     <div :class="['flex', { 'opacity-50': !slide.status }]">
-        <div class="h-[385px] w-[700px] relative flex align-middle item mb-3"
+        <div class="h-[345px] w-[700px] relative flex align-middle item mb-3"
             :style="`background-image: linear-gradient(to right bottom, ${slide.color1}, ${slide.color2})`">
-            <div :class="['w-full px-3 md:px-5 bg-contain bg-no-repeat',
+            <div :class="[`w-full px-3 md:px-5 bg-no-repeat`,
                 { 'bg-left-bottom': slide.positioning === 'right' },
                 { 'bg-right-bottom': slide.positioning === 'left' }]"
-                :style="`background-image: url(${slide.image ? slide.image.filepath : ''})`">
+                :style="`background-image: url(${slide.image ? slide.image.filepath : ''}); background-size: ${slide.size ? 700 * (slide.size/100) : 700}px;`">
                 <div
                     :class="['max-w-screen-xl mx-auto min-h-[100%] flex items-center justify-between', { 'flex-row-reverse': slide.positioning === 'right' }]">
                     <div class="basis-1/2">
-                        <h1 :class="['text-4xl leading-relaxed',
-                            { 'pl-5 border-l-4': slide.positioning === 'left' }, { 'pr-5 border-r-4': slide.positioning === 'right' }]"
+                        <h1 :class="['text-xl leading-relaxed',
+                            { 'pl-5 border-l-4': slide.positioning === 'left' }, { 'pr-5 border-r-4 text-right': slide.positioning === 'right' }]"
                             :style="`color: ${slide.text_color}; border-color: ${slide.text_color}`">
-                            <span class="text-5xl">{{ slide.title }}</span><br>
+                            <span class="text-md">{{ slide.title }}</span><br>
                             {{ slide.subtitle }}
                         </h1>
-                        <div class="my-3 text-gray-800 text-lg">
+                        <div class="my-3 text-gray-800 text-xs">
                             {{ short_text }}
                         </div>
-                        <div class="py-5 flex gap-1 md:gap-4">
+                        <div :class="['py-5 flex gap-1 md:gap-4', { 'justify-end': slide.positioning === 'right' }]">
                             <a v-if="slide.buttons" v-for="button in slide.buttons" :href="button.url"
                                 :class="['btn-micro', button.class]">{{
                                     button.text }}</a>
@@ -29,10 +29,10 @@
                     </div>
                     <div class="basis-1/2 text-center">
 
-                        <a v-if="slide.image" class="btn text-white" @click="addImage" title="Заменить изображение">
+                        <a v-if="slide.image" class="btn btn-secondary" @click="addImage" title="Заменить изображение">
                             <span class="fa-solid fa-arrows-rotate"></span>
                         </a>
-                        <a v-else class="btn text-white" @click="addImage" title="Загрузить изображение">
+                        <a v-else class="btn btn-active" @click="addImage" title="Загрузить изображение">
                             <span class="fa fa-plus"></span>
                         </a>
                     </div>
@@ -41,12 +41,16 @@
         </div>
         <div class="max-w-md w-full p-3">
             <div class="flex my-2 gap-2">
-                <div class="basis-1/2">
-                    <label for="">Позиционирование</label>
+                <div class="basis-1/3">
+                    <label for="">Расположение</label>
                     <select v-model="slide.positioning" @change="updateField($event, 'positioning')" class="tw-input">
                         <option value="left">Текст слева</option>
                         <option value="right">Текст справа</option>
                     </select>
+                </div>
+                <div class="basis-1/5">
+                    <label for="">Масштаб</label>
+                    <input type="number" :value="slide.size" @change="updateField($event, 'size')" class="tw-input">
                 </div>
                 <div>
                     <label for="">Фон 1</label>
@@ -127,7 +131,7 @@ export default {
     },
     computed: {
         short_text(){
-            return this.slide.text.substring(0, 50)+'...'
+            return this.slide.text ? this.slide.text.substring(0, 50)+'...' : '';
         }
     },
     methods: {
@@ -174,7 +178,7 @@ export default {
         uploadFile(file) {
             if (file) {
                 let form = new FormData();
-                form.append('file', file);
+                form.append('file[]', file);
                 if (this.slide.id) form.append('entity_id', this.slide.id);
                 form.append('entity_type', "App\\Models\\SliderItem");
                 form.append('uncompressed', true);
@@ -184,8 +188,8 @@ export default {
                         'Content-Type': 'multipart/form-data'
                     }
                 }).then(response => {
-                    if (response.data.file) {
-                        this.slide['image'] = response.data.file;
+                    if (response.data.files) {
+                        this.slide['image'] = response.data.files[0];
                     }
                 });
             }

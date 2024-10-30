@@ -12,7 +12,7 @@
 
   @layer base {
     body {
-      @apply font-candara subpixel-antialiased antialiased;
+      @apply font-candara subpixel-antialiased antialiased text-lg;
     }
   }
 
@@ -31,7 +31,7 @@ h1 {
 }
 
 .link {
-    @apply underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none transition-all;
+    @apply underline text-lg text-teal-600 hover:text-teal-700 rounded-md focus:outline-none transition-all;
 }
 
 .btn {
@@ -40,7 +40,7 @@ h1 {
 
 
 .btn-sm {
-    @apply py-1 px-6 transition-all text-gray-700 no-underline hover:no-underline focus:no-underline active:no-underline hover:opacity-90 hover:shadow-md rounded-md;
+    @apply py-1.5 px-6 transition-all text-gray-700 no-underline hover:no-underline focus:no-underline active:no-underline hover:opacity-90 hover:shadow-md rounded-md;
 }
 
 .btn-micro {
@@ -56,7 +56,7 @@ h1 {
 }
 
 .btn-secondary {
-    @apply bg-gradient-to-l from-gray-500 to-gray-400 text-white font-bold
+    @apply bg-gradient-to-l from-gray-500 to-gray-400 text-white font-bold text-center;
 }
 
 .btn-danger {
@@ -76,8 +76,28 @@ h1 {
     @apply bg-gradient-to-r from-teal-600 to-cyan-700;
 }
 
+.textarea {
+    @apply block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-teal-600 focus:border-teal-600 text-lg resize-none;
+}
+
+.select {
+    @apply block py-2.5 px-0 w-full text-lg text-teal-600 bg-transparent border-0 border-b-2 border-teal-600 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200;
+}
+
 .tw-input {
-    @apply border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full;
+    @apply border-gray-300 focus:border-teal-600 focus:ring-teal-600 rounded-md shadow-sm w-full;
+}
+
+.badge {
+    @apply inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-lg font-bold text-white bg-gray-600;
+}
+
+.badge-active {
+    @apply bg-gradient-to-r from-teal-600 to-cyan-700 text-white;
+}
+
+.badge-danger {
+    @apply bg-gradient-to-l from-[#ED1520] to-[#F1A515] text-white;
 }
 
 .prose {
@@ -101,6 +121,7 @@ h1 {
   .prose td>p, .prose th>p {
     @apply m-0;
   }
+ 
 
   /* ANIMATIONS */
 .fade-enter-active,
@@ -112,3 +133,4 @@ h1 {
 .fade-leave-to {
     opacity: 0;
 }
+

@@ -1,7 +1,7 @@
-@props(['disabled' => false, 'id' => '', 'label' => '', 'required' => false])
+@props(['disabled' => false, 'id' => '', 'label' => '', 'required' => false, 'value' => ''])
 
 <div class="relative z-0 w-full mb-5 group">
-    <input {{ $disabled ? 'disabled' : '' }} {{ $required ? 'required' : '' }} type="text" id="{{ $id }}" name="{{ $id }}" placeholder=""
+    <input value="{{ $value }}" {{ $disabled ? 'disabled' : '' }} {{ $required ? 'required' : '' }} type="text" id="{{ $id }}" name="{{ $id }}" placeholder=""
          class="block py-3 px-0 w-full text-xl text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 
          appearance-none focus:outline-none focus:ring-0 focus:border-cyan-700 peer">
     <label for="{{ $id }}" class="peer-focus:font-medium absolute text-xl text-gray-500 duration-300 transform 

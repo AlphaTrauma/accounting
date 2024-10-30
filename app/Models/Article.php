@@ -19,5 +19,9 @@ class Article extends Model
     public function images(){
         return $this->morphMany(File::class, 'entity');
     }
+
+    public function category(){
+        return $this->belongsTo(Categories::class, 'category_id');
+    }
  
 }

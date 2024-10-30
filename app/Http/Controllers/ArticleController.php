@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ArticleRequest;
 use App\Models\Article;
+use App\Models\Categories;
 use App\Models\File;
 use Carbon\Carbon; 
 use Illuminate\Http\Response;
@@ -13,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 class ArticleController extends Controller
 {
     public function index(){
-        $items = Article::orderBy('updated_at')->paginate(20);
+        $items = Article::with('category')->orderBy('updated_at')->paginate(20);
          
         return view('dashboard.articles.index', compact('items'));
     }

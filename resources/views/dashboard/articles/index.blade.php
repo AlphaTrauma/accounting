@@ -2,6 +2,9 @@
 
 @section('content')
     <h1>Все статьи</h1>
+    <div class="py-5">
+        <a href="{{ route('article.edit') }}" title="Новая статья" class="btn btn-active mb-3"><i class="fa fa-pen"></i> Новая статья</a>
+    </div>
     <section>
         @forelse($items as $item)
             <div class="p-3 shadow-sm bg-white mb-3">
@@ -16,7 +19,8 @@
                     <a href="{{ route('article.remove', $item) }}" title="Удалить статью" class="btn-sm"><i class="fa fa-trash"></i></a>
                 </div>
                <a href="{{ $item->slug ? route('article.show', $item->slug) : route('article.show', $item->id)}}" class="link"> {{ $item->title }} </a> 
-               <p>Автор: <b>{{ $item->user->name }}</b></p>
+               <p>Автор: <b>{{ $item->user->name }}</b> </p>
+               <p>Категория: <b> {{ $item->category->name ?? '-' }}</b></p>
                
             </div>
         @empty

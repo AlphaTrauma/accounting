@@ -1,33 +1,39 @@
 <template>
 
     <div>
-        <carousel v-if="!loading" :items-to-show="1"  :autoplay="5000" :transition="700" :wrapAround="true">
+        <carousel v-if="!loading" :items-to-show="1"  :autoplay="5000" :transition="700" :wrapAround="slides.length > 1">
             <slide v-for="slide in slides" :key="slide.id">
                 <div class="w-full"
                     :style="`background-image: linear-gradient(to right bottom, ${slide.color1}, ${slide.color2})`"
                     @mousedown.prevent="mouseDownHandler" @mouseup.prevent="mouseUpHandler($event, slide.url)">
-                    <div :class="['w-full px-3 md:px-5 bg-contain bg-no-repeat  pt-[120px]',
+                    <div :class="[`w-full px-3 md:px-5 bg-no-repeat pt-[120px]`, 
                         { 'bg-left-bottom': slide.positioning === 'right' },
                         { 'bg-right-bottom': slide.positioning === 'left' }]"
-                        :style="`background-image: url(${slide.image ? slide.image.filepath : ''})`"
+                        :style="`background-image: url(${slide.image ? slide.image.filepath : ''}); background-size: ${slide.size ? slide.size : 100}%`"
                         class="w-full relative flex align-middle pt-[120px]">
                         <div class="max-w-screen-xl w-full mx-auto  text-left min-h-[90vh] flex items-center justify-between">
-                            <div class="basis-1/2 text-left">
+                            <div v-if="slide.positioning === 'right'" class="basis-1/2">
+                            </div>
+                            <div :class="['basis-1/2 ', 
+                            {'text-right': slide.positioning === 'right', 'text-left': slide.positioning === 'left'}]">
 
                                 <h2
-                                    class="pl-5 md:pl-10 border-l-4 border-l-cyan-700 text-4xl text-cyan-700 leading-relaxed">
+                                    :class="[' text-4xl leading-relaxed', 
+                                    {'border-r-4 pr-5 md:pr-10': slide.positioning === 'right', 
+                                    ' border-l-4 pl-5 md:pl-10': slide.positioning === 'left'}]" 
+                                    :style="`color: ${slide.text_color}; border-color: ${slide.text_color};`">
                                     <span class="text-5xl">{{ slide.title }}</span><br>
                                     {{ slide.subtitle }}
                                 </h2>
                                 <div class="my-3 text-gray-800 text-lg">
                                     {{ slide.text }}
                                 </div>
-                                <div class="py-5 flex gap-1 md:gap-4">
+                                <div :class="['py-5 flex gap-1 md:gap-4', {'justify-end': slide.positioning === 'right'}]">
                                     <a v-for="button in slide.buttons" :href="button.url"
                                         :class="`btn ${button.class}`">{{ button.text }}</a>
                                 </div>
                             </div>
-                            <div class="basis-1/2">
+                            <div v-if="slide.positioning === 'left'" class="basis-1/2">
                             </div>
                         </div>
                     </div>

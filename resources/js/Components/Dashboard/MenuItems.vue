@@ -2,7 +2,7 @@
     <div class="p-4">
 
         <div class="flex gap-4">
-            <div class="basis-3/4 overflow-x-auto">
+            <div class="overflow-x-auto">
                 <div class="overflow-hidden sm:rounded-md mb-4">
                     <div v-for="item in highLevelItems" :key="item.id" class="flex items-center">
                         <div class="p-3 mr-1 mb-2 border border-gray-200 mb-2 bg-white w-[250px]">
@@ -123,15 +123,16 @@
                     </div>
                 </Transition>
             </div>
-            <div class="basis-1/4">
+            
+        </div>
+        <div class="my-3">
                 <h2 class="text-center font-bold text-xl mb-2">Страницы</h2>
                 <p>Нажмите на странице, чтобы добавить ссылку на неё в редактируемый пункт меню</p>
                 <div v-for="page of pages" @click="form.url = `/${page.slug}`"
-                    class="p-2 transition-all rounded-sm bg-gray-200 hover:bg-gray-300 my-2 cursor-pointer">
+                    class="p-2 transition-all rounded-sm bg-gray-200 hover:bg-gray-300 my-2 cursor-pointer inline-block mr-3">
                     <span>{{ page.title }}</span>
                 </div>
             </div>
-        </div>
     </div>
 </template>
 

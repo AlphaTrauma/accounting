@@ -3,47 +3,51 @@
 @section('content')
 
     <div class="max-w-md mx-auto">
-        <h1>Регистрация</h1>
-        <form method="POST" action="{{ route('register') }}">
+        <h1 class=" text-center mb-[100px]">Регистрация исполнителя</h1>
+        <form method="POST" action="{{ route('executor_store') }}">
         @csrf
-
-        <!-- Name -->
+            
+        
+            <!-- Name -->
             <div>
-                <label class="block font-medium text-sm text-gray-700" for="name">Имя</label>
-                <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                <x-text-input required="true" label="Имя" id="name"></x-text-input> 
                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
             </div>
 
             <!-- Email Address -->
-            <div class="mt-4">
-                <label class="block font-medium text-sm text-gray-700" for="email">E-mail</label>
-                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
+            <div class="mt-4"> 
+                <x-text-input required="true" label="Введите email" id="email"></x-text-input> 
                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
             </div>
 
             <!-- Password -->
-            <div class="mt-4">
-                <label class="block font-medium text-sm text-gray-700" for="password">Пароль</label>
-
-                <x-text-input id="password" class="block mt-1 w-full"
-                              type="password"
-                              name="password"
-                              required autocomplete="new-password" />
+            <div class="mt-4"> 
+                <x-text-input required="true" label="Пароль" id="password"></x-text-input>
 
                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
             </div>
 
             <!-- Confirm Password -->
-            <div class="mt-4">
-                <label class="block font-medium text-sm text-gray-700" for="password_confirmation">Подтвердите пароль</label>
-                <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                              type="password"
-                              name="password_confirmation" required autocomplete="new-password" />
-
+            <div class="mt-4"> 
+                <x-text-input required="true" label="Подтвердите пароль" id="password_confirmation"></x-text-input>
                 <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
             </div>
 
-            <div class="flex items-center justify-end mt-4 gap-4">
+            <h2 class="text-lg font-bold text-center">
+                Данные исполнителя
+            </h2>
+
+            <div>
+                <x-text-input required="false" label="Фамилия" id="last_name"></x-text-input> 
+                <x-input-error :messages="$errors->get('last_name')" class="mt-2" />
+            </div>
+
+            <div>
+                <x-text-input required="false" label="Должность или специальность" id="job_title"></x-text-input> 
+                <x-input-error :messages="$errors->get('job_title')" class="mt-2" />
+            </div>
+
+            <div class="flex items-center justify-between my-10 gap-4">
                 <a class="link" href="{{ route('login') }}">
                     Уже зарегистрированы?
                 </a>

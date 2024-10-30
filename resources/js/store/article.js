@@ -18,7 +18,7 @@ const actions = {
   setCategory({commit}, $category_id){
     commit('setCategory', $category_id);
   },
-  async fetchArticle({ commit }, id) {
+  fetchArticle({ commit }, id) {
     if(!id){ 
       commit('setArticle', {
         id: null,
@@ -31,16 +31,18 @@ const actions = {
         status: false,
     })
       commit('setLoading', false);
+    } else {
+      try {
+        axios.get(`/dashboard/article/${id}/data`).then(response => {
+            commit("setArticle", response.data.item);
+        });
+      } catch (error) {
+        commit('setErrors', [error]);
+      } finally {
+        commit('setLoading', false);
+      }
     }
-    try {
-      axios.get(`/dashboard/article/${id}/data`).then(response => {
-          commit("setArticle", response.data.item);
-      });
-    } catch (error) {
-      commit('setErrors', [error]);
-    } finally {
-      commit('setLoading', false);
-    }
+    
   },
   async saveArticle({ commit }, article) {
     commit('setLoading', true);

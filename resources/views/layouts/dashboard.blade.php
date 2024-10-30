@@ -18,8 +18,12 @@
 
                 <span>На сайт</span>
             </a>
-            <div>
+            <div class="flex">
                 <a href="#" class="px-4  text-white">{{ Auth::user()->name }}</a>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="px-4 text-white font-bold">Выйти</button>
+                </form>
             </div>
         </div>
     </nav>
@@ -30,10 +34,11 @@
 
         <!-- Main Content -->
         <main class="p-6 w-full">
+            <x-alert></x-alert>
             @yield('content')
         </main>
     </div>
 </div>
-
+@include('blocks.svg')
 </body>
 </html>

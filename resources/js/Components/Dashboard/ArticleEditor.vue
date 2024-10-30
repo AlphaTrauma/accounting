@@ -12,6 +12,9 @@
             <div class="my-3 flex gap-3">
                 <input type="text" class="tw-input w-full" v-model="article.title" placeholder="Название статьи">
                 <input type="text" class="tw-input w-full" v-model="article.slug" placeholder="Постоянный адрес">
+                <select  class="tw-input w-full" v-model="article.category_id">
+                    <option v-for="category in categories" :value="category.id">{{ category.name }}</option>
+                </select>
 
                 <label class="inline-flex items-center cursor-pointer">
                     <input type="checkbox" v-model="article.status" class="sr-only peer">
@@ -77,12 +80,13 @@ export default {
         },
         category_id: {
             type: Number,
-            required: true
+            required: false
         }
     },
     data(){
         return {
-            showMeta: false
+            showMeta: false,
+            categories: []
         }
     },
     computed: {
@@ -111,10 +115,17 @@ export default {
         },
     },
     mounted() {
-        if(!this.$props.id && this.$props.category_id){
-            this.setCategory(this.$props.category_id);
-        }
+        
+        axios.get('/dashboard/categories/data').then(response => {
+            this.categories = response.data.items; 
+        })
         this.fetch(this.$props.id);
+        if(!this.$props.id && this.$props.category_id)
+        {
+            setTimeout(() => {
+                this.setCategory(this.$props.category_id);
+            }, 500)
+        }
     }
 }
 </script>
