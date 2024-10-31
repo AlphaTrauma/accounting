@@ -17,7 +17,7 @@
               aria-current="page">
                  Основная информация
              </a>
-    @if(Auth::user()->executor and false)
+    @if(Auth::user()->executor)
     <li>
         <a href="{{ route('lk.responses') }}" 
         @if(request()->route() and request()->route()->getName() === 'lk.responses')
@@ -54,7 +54,7 @@
             </a>
         </li>
     @endif
-    @if(Auth::user()->executor and false)
+    @if(Auth::user()->executor)
     <li>
         <a href="#" 
         @if(request()->route() and request()->route()->getName() === 'lk.executor')

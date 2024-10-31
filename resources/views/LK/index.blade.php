@@ -10,7 +10,7 @@
         <h3 class="text-lg font-bold text-gray-900 mb-2">Основная информация</h3>
         <div class="my-5 ">
             <div class="flex gap-3 mb-5">
-                @if(Auth::user()->executor and false)
+                @if(Auth::user()->executor)
                 <div>
                     <p class="text-lg mb-3">Ваша оценка исполнителя: </p>
                      <x-rating rating="7"></x-rating>
