@@ -36,7 +36,7 @@ class FilesController extends Controller
             }
 
             $file = new File([
-                'filepath' => '/' . $uploadPath . '/' . $filename,
+                'filepath' => '/storage/' . $uploadPath . '/' . $filename,
                 'filename' => $uploadedFile->getClientOriginalName(),
                 'ext' => $uploadedFile->getClientOriginalExtension(),
                 'entity_type' => $request->input('entity_type')
@@ -70,10 +70,10 @@ class FilesController extends Controller
             $newHeight = $height * $ratio;
             $newImage = imagecreatetruecolor($newWidth, $newHeight);
             imagecopyresampled($newImage, $image, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
-            imagejpeg($newImage, $uploadPath . '/' . $filename, 90);
+            imagejpeg($newImage, $uploadPath . '/storage/' . $filename, 90);
             imagedestroy($newImage);
         else:
-            imagejpeg($image, $uploadPath . '/' . $filename, 90);
+            imagejpeg($image, $uploadPath . '/storage/' . $filename, 90);
 
         endif;
 
