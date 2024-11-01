@@ -3,6 +3,7 @@
 /public/hot
 /public/storage
 /public/upload
+/public/images
 /storage/*.key
 /vendor
 .env
@@ -19,5 +20,3 @@ yarn-error.log
 /.vscode
 
 *.json
-/public
-/public
