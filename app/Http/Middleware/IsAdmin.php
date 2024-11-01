@@ -18,7 +18,7 @@ class IsAdmin
     public function handle(Request $request, Closure $next): Response
     {
         $user = Auth::user(); 
-        if ($user && $user->customer) {
+        if ($user && $user->admin) {
             return $next($request);
         } 
         return abort(403);
