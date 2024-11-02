@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MenuItemsController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\CustomerController;
@@ -28,6 +29,8 @@ Route::get('/guides', [GuideController::class, 'index'])->name('guides');
 Route::get('/purchase/complete', [GuideController::class, 'success'])->name('purchase.success');
 Route::get('/purchase/{guide}', [GuideController::class, 'purchase'])->name('purchase');
 
+Route::get('/password', [PasswordController::class, 'showForm'])->name('password.form');
+Route::post('/password', [PasswordController::class, 'checkPassword'])->name('password.check');
 
 # Маршруты админа / дэшборд
 Route::middleware('admin')->prefix('dashboard')->group(function () { 
