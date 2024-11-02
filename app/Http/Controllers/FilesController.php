@@ -36,7 +36,7 @@ class FilesController extends Controller
             }
 
             $file = new File([
-                'filepath' => '/storage/' . $uploadPath . '/' . $filename,
+                'filepath' => $uploadPath . '/' . $filename,
                 'filename' => $uploadedFile->getClientOriginalName(),
                 'ext' => $uploadedFile->getClientOriginalExtension(),
                 'entity_type' => $request->input('entity_type')
