@@ -5,7 +5,7 @@
      <x-alert></x-alert>
 
 <div class="md:flex">
-    @include('LK.nav')
+    @include('lk.nav')
     <div class="p-6 bg-gray-50 text-medium text-gray-500 dark:text-gray-400 dark:bg-gray-800 rounded-lg w-full">
         <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2 text-center">Взятые заказы</h3>
         @forelse($tasks as $task)

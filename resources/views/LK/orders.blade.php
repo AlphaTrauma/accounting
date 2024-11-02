@@ -5,7 +5,7 @@
     <x-alert></x-alert>
 
 <div class="md:flex">
-    @include('LK.nav')
+    @include('lk.nav')
     <div class="p-6 bg-gray-50 text-medium text-gray-500 rounded-lg w-full">
         <h3 class="text-lg font-bold text-gray-900 mb-2 text-center">Размещённые заказы</h3>
         
