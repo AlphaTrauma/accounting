@@ -6,7 +6,7 @@
     <title>Введите пароль</title>
     @vite(['resources/css/app.css'])
 </head>
-<body class="bg-gray-100 flex items-center justify-center h-[100vh]">
+<body class="flex items-center justify-center h-[100vh]" style="background-image: url(/images/graph1.png), linear-gradient(45deg, rgb(226, 226, 226), rgb(196, 196, 196))">
     <div class="w-full max-w-md bg-white shadow-lg rounded-lg p-8">
         <h2 class="text-2xl font-semibold text-center text-gray-700 mb-6">Введите пароль</h2>
         <p class="text-xl">Сайт находится в разработке. Для доступа введите пароль</p>
