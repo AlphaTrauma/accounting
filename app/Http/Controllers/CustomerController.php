@@ -93,6 +93,7 @@ class CustomerController extends Controller
             $order->load('files', 'fulfillment', 'customer', 'executor');
             if(!$order->fulfillment):
                 $order->fulfillment()->create(['user_id' => $order->executor_id, 'order_id' => $order->id, 'status' => OrderFulfillment::STATUS_IN_PROGRESS]);
+                $order->load('fulfillment');
             endif;
             $parent = ['url' => '/personal/orders', 'title'=> 'Ваши заказы'];
             $title = "Выполнение заказа";

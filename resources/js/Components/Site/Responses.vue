@@ -9,7 +9,7 @@
                 <div class="btn btn-sm btn-active">Принять заявку</div>
             </request-action>
             
-            <div v-else-if="actve !== response.user.id" class="btn btn-sm btn-secondary disabled">Отклонена</div>
+            <div v-else-if="actve != response.user.id" class="btn btn-sm btn-secondary disabled">Отклонена</div>
             <div v-else class="btn btn-sm btn-primary disabled">Принята</div>
         </div>
     </div>
