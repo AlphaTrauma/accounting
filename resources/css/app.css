@@ -1,10 +1,12 @@
+@import '/node_modules/@fortawesome/fontawesome-free/css/all.min.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+
 @font-face {
     font-family: 'Candara';
-    src: url('http://accounting.test/fonts/candara.ttf') format('truetype');
+    src: url('/fonts/candara.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     

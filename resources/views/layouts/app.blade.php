@@ -77,7 +77,6 @@
                 }
             }); 
              
-        </script>
-        <script src="https://kit.fontawesome.com/e96bfdb519.js" crossorigin="anonymous"></script>
+        </script> 
     </body>
 </html>
