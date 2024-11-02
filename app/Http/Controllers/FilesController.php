@@ -101,7 +101,7 @@ class FilesController extends Controller
     public function download($id)
     {
         $file = File::find($id);
-        return Storage::disk('public')->download($file->filepath, $file->filename);
+        return response()->download(Storage::disk('public')->path($file->filepath), $file->filename);
     }
 
     public function remove(Request $request)
