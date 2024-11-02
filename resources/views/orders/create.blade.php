@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title') Создание нового заказа @endsection
 @section('content')
     <h1 class="text-center">Создать новый заказ</h1>
      

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title') Заказ № {{ $order->id }}  @endsection
 @section('content')
     <div class="relative">
         @include('blocks.order_customer', ['user' => $order->user])

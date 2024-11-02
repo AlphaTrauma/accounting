@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title') Доступные заказы @endsection
 @section('content')
     <h1 class="text-center">Доступные заказы</h1>
      

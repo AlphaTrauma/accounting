@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title') Личный кабинет пользователя @endsection
 @section('content')
     <h1 class="text-center">Личный кабинет пользователя <span class="text-cyan-600">{{ Auth::user()->email }}</span></h1>
      <x-alert></x-alert>

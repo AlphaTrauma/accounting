@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title') Файлы заказа и публикация @endsection
 @section('content')
     <h1 class="text-center">Файлы заказа и публикация</h1>
      

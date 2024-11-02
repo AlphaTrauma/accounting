@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
+@section('title') {{ $item->meta_title ?? $item->title }} @endsection
+
 @section('head')
-    <title>{{ $item->meta_title ?? $item->title }} | СчётКоннект — биржа бухгалтерских услуг</title>
     <meta name="description" content="{{ $item->meta_description || 'Страница "'.$item->title.'"'}}">
 @endsection
 

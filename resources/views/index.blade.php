@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('head')
-    <title>СчётКоннект</title>
+@section('title')
+Главная
 @endsection
 
 @section('wide-content') 

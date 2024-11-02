@@ -24,7 +24,7 @@
                
             </div>
         @empty
-            <p>Статей пока нет. <a href="{{ route('articles.edit') }}" class="link">Создать</a></p>
+            <p>Статей пока нет. <a href="{{ route('article.edit') }}" class="link">Создать</a></p>
         @endforelse
     </section>
 @endsection

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title') Выполнение заказа № {{ $order->id }}  @endsection
 @section('content')
     <div class="relative"> 
         <h1>Выполнение заказа № {{ $order->id }}</h1> 
