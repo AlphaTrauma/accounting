@@ -117,7 +117,7 @@
                     <div class="py-2 font-bold text-center text-lg">Изображения статьи</div>
                     <div class="flex flex-wrap">
                         <div v-for="file in files" class="basis-1/2 p-1">
-                            <img class="h-auto max-w-full" :src="file.filepath" alt="">
+                            <img class="h-auto max-w-full" :src="`/${file.filepath}`" alt="">
                         </div>
                     </div>
                 </div>
@@ -169,7 +169,7 @@ export default {
             const file = event.target.files[0];
             if (file) {
                 let form = new FormData();
-                form.append('file', file);
+                form.append('file[]', file);
                 if (this.entity.id) form.append('entity_id', this.entity.id);
                 form.append('entity_type', this.type);
                 axios.post('/files/upload', form, {
@@ -177,10 +177,10 @@ export default {
                         'Content-Type': 'multipart/form-data'
                     }
                 }).then(response => {
-                    if (response.data.file) {
+                    if (response.data.files) {
                         this.files.push()
                         this.editor.chain().focus().setImage({
-                            src: response.data.file.filepath
+                            src: "/" + response.data.files[0].filepath
                         }).run();
                     }
                 });

@@ -25,7 +25,7 @@ class FilesController extends Controller
             }
 
             if ($this->isImage($uploadedFile) && !$request['uncompressed']) {
-                $this->compressImage($uploadedFile, public_path($uploadPath), $filename);
+                $this->compressImage($uploadedFile, Storage::disk('public')->path($uploadPath), $filename);
             } else {
                 Storage::disk('public')->put($uploadPath . '/' . $filename, file_get_contents($uploadedFile));
             }
@@ -70,10 +70,10 @@ class FilesController extends Controller
             $newHeight = $height * $ratio;
             $newImage = imagecreatetruecolor($newWidth, $newHeight);
             imagecopyresampled($newImage, $image, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
-            imagejpeg($newImage, $uploadPath . '/storage/' . $filename, 90);
+            imagejpeg($newImage, $uploadPath .'/'. $filename, 90);
             imagedestroy($newImage);
         else:
-            imagejpeg($image, $uploadPath . '/storage/' . $filename, 90);
+            imagejpeg($image, $uploadPath .'/'. $filename, 90);
 
         endif;
 
