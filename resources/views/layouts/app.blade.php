@@ -14,40 +14,46 @@
     <body class="max-w-[100vw] overflow-x-hidden">
         <div id="preloader" class="fixed inset-0 flex items-center justify-center bg-white  z-50 transition-opacity duration-500 opacity-100">
             <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-cyan-600"></div>
-          </div>
-        <div class="hidden" class="min-h-[80vh] bg-gray-100" id="app">
-            @include('navigation.navbar')
-            @include('navigation.mobile')
-            @hasSection('wide-content')
-            <main>
-                @yield('wide-content')
-            </main>
-            @else
-            <div class="pt-[120px] py-5"> 
-                <main class="py-5 px-4 max-w-screen-xl mx-auto  bg-white">
-                    @include('navigation.breadcrumbs')
-                    @yield('content')
-                </main>
-            </div>
-            @endif
-            <modal-window></modal-window>
         </div>
-        @include('footer')
+        <div style="display: none;" id="body">
+            <div id="app" class="min-h-[80vh] bg-gray-100">
+                @include('navigation.navbar')
+                @include('navigation.mobile')
+                @hasSection('wide-content')
+                <main>
+                    @yield('wide-content')
+                </main>
+                @else
+                <div class="pt-[120px] py-5"> 
+                    <main class="py-5 px-4 max-w-screen-xl mx-auto">
+                        @include('navigation.breadcrumbs')
+                        <div class=" px-3 py-5 rounded-lg bg-white">
+                            @yield('content')
+                        </div>
+                        
+                    </main>
+                </div>
+                @endif
+                <modal-window></modal-window>
+            </div>
+            @include('footer')
+        </div>
+        
         
         @include('blocks.svg')
         <script>
             window.addEventListener("load", (event) => { 
             const preloader = document.getElementById('preloader');
-            const content = document.getElementById('app');
-
+            const content = document.getElementById('body');
+            
             preloader.style.opacity = '0';  
-            content.style.display = 'block';  
+            content.style.display = 'block'; 
             setTimeout(function() {
               preloader.style.display = 'none';
             }, 500);  
 
-                const navbar = document.getElementById('navbar');
                 
+            const navbar = document.getElementById('navbar');
                 if (window.scrollY > 3) {
                         navbar.classList.add('bg-white', 'shadow-md');
                         navbar.classList.remove('bg-transparent', 'py-2'); 

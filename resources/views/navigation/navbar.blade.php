@@ -1,4 +1,4 @@
-<nav  id="navbar" class="bg-transparent fixed top-0 left-0 w-full max-w-[100vw] py-2 transition-all z-10">
+<nav id="navbar" class="bg-transparent fixed top-0 left-0 w-full max-w-[100vw] py-2 transition-all z-10">
         @if(Auth::user() and Auth::user()->admin)
             <a href="/dashboard" class="link absolute right-10 top-5">Управление</a>
         @endif
