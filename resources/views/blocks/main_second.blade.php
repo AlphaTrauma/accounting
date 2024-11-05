@@ -45,6 +45,11 @@
             </div>
         </div>
     </div>
+    <div class="w-full bg-white py-10">
+        <div class="max-w-screen-xl mx-auto">
+            <p>Текстовое описание сайта</p>
+        </div>
+    </div>
 
 
         <div class="w-full bg-gradient-to-r from-teal-600 to-cyan-700 ">
