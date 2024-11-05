@@ -75,7 +75,9 @@ class GuideController extends Controller
     }
 
     public function purchase(Guide $guide){
-        return view('guides.purchase', compact('guide'));
+        $parent = ['title' => 'Гайды', 'url' => '/guides'];
+        $title = "Покупка";
+        return view('guides.purchase', compact('guide', 'parent', 'title'));
     }
 
     public function purchases(){
