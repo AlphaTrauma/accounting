@@ -180,7 +180,7 @@ export default {
                     if (response.data.files) {
                         this.files.push()
                         this.editor.chain().focus().setImage({
-                            src: "/" + response.data.files[0].filepath
+                            src: response.data.files[0].filepath
                         }).run();
                     }
                 });

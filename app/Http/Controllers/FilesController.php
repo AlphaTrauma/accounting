@@ -23,8 +23,9 @@ class FilesController extends Controller
             if (!FileFacade::exists($uploadPath)) {
                 FileFacade::makeDirectory($uploadPath, 0755, true);
             }
+            $isImage = $this->isImage($uploadedFile);
 
-            if ($this->isImage($uploadedFile) && !$request['uncompressed']) {
+            if ( $isImage && !$request['uncompressed']) {
                 $this->compressImage($uploadedFile, Storage::disk('public')->path($uploadPath), $filename);
             } else {
                 Storage::disk('public')->put($uploadPath . '/' . $filename, file_get_contents($uploadedFile));
@@ -36,7 +37,7 @@ class FilesController extends Controller
             }
 
             $file = new File([
-                'filepath' => $uploadPath . '/' . $filename,
+                'filepath' =>  $isImage ? asset("/storage/". $uploadPath . '/' . $filename) : $uploadPath . '/' . $filename,
                 'filename' => $uploadedFile->getClientOriginalName(),
                 'ext' => $uploadedFile->getClientOriginalExtension(),
                 'entity_type' => $request->input('entity_type')
