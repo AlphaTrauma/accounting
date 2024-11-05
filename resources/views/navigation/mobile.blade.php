@@ -56,9 +56,7 @@
             justify-center rounded-lg md:hidden  focus:outline-none  " aria-controls="navbar-dropdown"
                     aria-expanded="false">
                 <span class="sr-only">Открыть главное меню</span>
-                <svg class="w-full h-full" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                </svg>
+                <i class="fa-solid fa-xmark"></i>
                 
             </button>
         </div>
