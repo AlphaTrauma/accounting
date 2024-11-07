@@ -9,13 +9,13 @@
         <div  class="flex items-center space-x-3 text-teal-800 py-1 px-5">
             <i class="fa-solid fa-share-nodes"></i>
             <span class="self-center text-2xl font-semibold whitespace-nowrap">[Название сайта]</span>
-        </div> 
+        </div>
         @else
         <a href="/" class="flex items-center space-x-3 text-teal-800 py-1 px-5">
             <i class="fa-solid fa-share-nodes"></i>
             <span class="self-center text-2xl font-semibold whitespace-nowrap">[Название сайта]</span>
-        </a> 
-        
+        </a>
+
         @endif
         <p class="text-center">Фриланс профессионалов</p>
             </div>
@@ -26,18 +26,18 @@
         @endauth
         @guest
             <div class="flex gap-2">
-                <a href="/register" class="btn btn-sm btn-active"><i class="fa-solid fa-right-to-bracket"></i> Я заказчик</a>
+                <a href="/customer_register" class="btn btn-sm btn-active"><i class="fa-solid fa-right-to-bracket"></i> Я заказчик</a>
                 <a href="/register" class="btn btn-sm btn-primary"><i class="fa-solid fa-right-to-bracket"></i> Я исполнитель</a>
             </div>
         @endguest
-            
-        
+
+
 
     </div>
 
     <div class="mb-2 max-w-full md:max-w-screen-xl flex flex-wrap items-center justify-end mx-auto text-2xl bg-transparent">
-        
-        
+
+
         <button data-collapse-toggle="navbar-dropdown" id="burger" type="button" class="inline-flex items-center p-2 w-10 h-10 text-teal-800
         justify-center rounded-lg md:hidden hover:bg-gray-100 focus:outline-none " aria-controls="navbar-dropdown"
                 aria-expanded="false">
@@ -46,7 +46,7 @@
         </button>
         <div class="w-full hidden md:block md:w-auto">
             <div class="flex font-medium p-1 md:space-x-8 justify-end flex-row md:mt-0 bg-transparent">
-                 
+
                 @foreach($navItems[""] ?? [] as $navItem)
                     <div class="relative font-semibold">
                         @if($navItems->has($navItem->id))
