@@ -153,7 +153,8 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
-Route::get('/register', [ExecutorController::class, 'create'])->name('register.executor');
+Route::get('/register', [HomeController::class, 'register'])->name('preregister');
+Route::get('/executor_register', [ExecutorController::class, 'create'])->name('register.executor');
 Route::post('/executor_register', [ExecutorController::class, 'store'])->name('executor_store');
 Route::get('/customer_register', [CustomerController::class, 'create'])->name('register.customer');
 Route::post('/customer_register', [CustomerController::class, 'store'])->name('customer_store');

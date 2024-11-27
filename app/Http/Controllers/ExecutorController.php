@@ -19,7 +19,8 @@ class ExecutorController extends Controller
     public function create(): View
     { 
         $title = 'Регистрация исполнителя';
-        return view('auth.register', compact('title'));
+        $parent = ['title' => 'Регистрация', 'url' => "/register"];
+        return view('auth.register', compact('title', 'parent'));
     }
 
     /**

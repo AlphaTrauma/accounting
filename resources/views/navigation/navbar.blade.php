@@ -26,8 +26,8 @@
         @endauth
         @guest
             <div class="flex gap-2">
-                <a href="/customer_register" class="btn btn-sm btn-active"><i class="fa-solid fa-right-to-bracket"></i> Я заказчик</a>
-                <a href="/register" class="btn btn-sm btn-primary"><i class="fa-solid fa-right-to-bracket"></i> Я исполнитель</a>
+                <a href="/login" class="btn btn-sm btn-active"><i class="fa-solid fa-right-to-bracket"></i> Вход</a>
+                <a href="{{ route('preregister') }}" class="btn btn-sm btn-primary"><i class="fa-solid fa-right-to-bracket"></i> Регистрация</a>
             </div>
         @endguest
 

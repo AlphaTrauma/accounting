@@ -19,7 +19,8 @@ class CustomerController extends Controller
     public function create(): View
     { 
         $title = 'Регистрация заказчика';
-        return view('auth.customer-register', compact('title'));
+        $parent = ['title' => 'Регистрация', 'url' => "/register"];
+        return view('auth.customer-register', compact('title', 'parent'));
     }
 
 

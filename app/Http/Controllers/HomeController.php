@@ -22,4 +22,11 @@ class HomeController extends Controller
 
         return view('LK.index', compact('title', 'lastOrder', 'lastTask'));
     }
+
+    public function register(){
+        
+        $title = 'Регистрация';
+
+        return view('page.preregister', compact('title'));
+    }
 }
